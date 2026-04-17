@@ -10,6 +10,11 @@ def det_distros():
     distros = Distro.query.all()
     return jsonify([d.to_dict() for  d in distros])
 
+@bp.route('/distros/<int:id>', methods=['GET'])
+def method_name(id):
+    distro = Distro.query.get_or_404(id)
+    return jsonify(distro.to_dict())
+
 
 @bp.route('/distros', methods=['POST'])
 def create_distro():
